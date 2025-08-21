@@ -1,54 +1,23 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Slotify — All-in-One Booking</title>
-<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1c64f2">
-<link rel="icon" href="icon-512.png">
-<style>body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:#0b1220;color:#e5e7eb}
-.app{max-width:480px;margin:0 auto;padding:16px 16px 64px}
-header{display:flex;gap:12px;align-items:center;margin:8px 0 12px}
-header img{width:36px;height:36px;border-radius:10px}
-h1{font-size:20px;margin:0}.sub{font-size:12px;color:#94a3b8}
-.search{display:flex;gap:8px;margin:12px 0 8px}
-.search input,.search select{background:#0f172a;color:#e5e7eb;border:1px solid #1f2937;border-radius:12px;padding:12px;width:100%}
-.chips{display:flex;gap:8px;overflow:auto;padding-bottom:6px;margin:8px 0 14px}
-.chip{padding:8px 12px;background:#0f172a;border:1px solid #1f2937;border-radius:999px;white-space:nowrap;font-size:12px;cursor:pointer}
-.chip.active{background:#1c64f2;border-color:transparent}
-.card{background:#0f172a;border:1px solid #1f2937;border-radius:16px;padding:12px;margin-bottom:12px;box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.02)}
-.venue{display:flex;gap:12px}.thumb{width:84px;height:84px;border-radius:12px;background:linear-gradient(135deg,#1c64f2,#9333ea)}
-.title{font-weight:700;margin:0 0 4px}.muted{color:#94a3b8;font-size:12px}
-.row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
-button.primary{background:#1c64f2;color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:600}
-button.ghost{background:transparent;border:1px solid #1f2937;color:#e5e7eb;border-radius:12px;padding:10px 14px}
-.tabs{position:sticky;bottom:0;left:0;right:0;background:rgba(5,7,14,.72);backdrop-filter:blur(8px);padding:10px;display:flex;gap:8px;max-width:480px;margin:0 auto;border-top:1px solid #1f2937}
-.tab{flex:1}
-.sheet{position:fixed;left:0;right:0;bottom:-100%;background:#0b1220;border-top-left-radius:24px;border-top-right-radius:24px;border:1px solid #1f2937;max-width:480px;margin:0 auto;padding:16px;transition:bottom .25s ease;box-shadow:0 -20px 60px rgba(0,0,0,.5)}
-.sheet.open{bottom:0}.sheet h2{margin:0 0 6px;font-size:18px}.sheet .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.slot{padding:8px;text-align:center;border:1px solid #1f2937;border-radius:12px;cursor:pointer;font-size:12px;background:#0f172a}.slot.sel{outline:2px solid #1c64f2}
-.section{margin:12px 0}.section h3{margin:0 0 8px;font-size:14px;color:#cbd5e1}
-.notice{font-size:12px;color:#cbd5e1;background:#0f172a;border:1px dashed #334155;padding:8px;border-radius:12px}
-</style></head>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Slotify — All-in-One Booking</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#1c64f2" />
+  <link rel="icon" href="icon-512.png" />
+</head>
 <body>
-<div class="app">
-<header><img src="icon-512.png" alt="Slotify"><div><h1>Slotify</h1><div class="sub">All-in-one slot booking</div></div></header>
-<div class="search"><input id="q" placeholder="Search venue…"><select id="city"><option>Ahmedabad</option><option>Vadodara</option><option>Rajkot</option><option>Surat</option></select></div>
-<div class="chips" id="chips"></div>
-<div id="list"></div>
-<div class="tabs"><button class="ghost tab" id="tabExplore">Explore</button><button class="ghost tab" id="tabBookings">My Bookings</button></div>
-</div>
-<div class="sheet" id="sheet">
-<div class="drag" style="height:4px;width:44px;background:#334155;border-radius:4px;margin:0 auto 10px"></div>
-<h2 id="vName">Book</h2><div class="muted" id="vMeta"></div>
-<div class="section"><h3>Date</h3><input id="date" type="date" style="width:100%;background:#0f172a;color:#e5e7eb;border:1px solid #1f2937;border-radius:12px;padding:10px"></div>
-<div class="section"><h3>Available slots</h3><div class="grid" id="slots"></div></div>
-<div class="section"><h3>Payment</h3><div class="details">
-<label><input type="radio" name="pay" value="online" checked> Pay online (stub)</label>
-<label><input type="radio" name="pay" value="location"> Pay at location</label>
-<div class="notice">No-show policy: For “Pay at location”, a refundable ₹49 hold or OTP check may be required. Cancel up to 2 hours before to avoid penalties.</div>
-</div></div>
-<div class="section"><div class="row"><div><div class="muted">Est. total</div><div id="price" style="font-size:18px;font-weight:800">₹0</div></div>
-<div style="display:flex;gap:8px"><button class="ghost" id="closeBtn">Close</button><button class="primary" id="confirmBtn">Confirm</button></div></div></div>
-</div>
-<script src="app.js"></script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('./service-worker.js');});}</script>
-</body></html>
+  <div id="app"></div>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
