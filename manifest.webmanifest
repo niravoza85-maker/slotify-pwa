@@ -1,0 +1,17 @@
+{
+  "name": "Slotify \u2014 All-in-One Booking",
+  "short_name": "Slotify",
+  "description": "Mobile slot booking for libraries, study halls, sports, hobby classes and community halls.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1c64f2",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
